@@ -11,7 +11,8 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Step 2: Use smaller Java image to run .jar
-FROM eclipse-temurin-17-jdk
+FROM eclipse-temurin:17-jdk
+
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
